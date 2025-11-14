@@ -78,7 +78,7 @@ def check_game_over(player_pieces, computer_pieces, domino_snake):
     return False
 
 def handle_player_turn(player_pieces, stock_pieces, domino_snake):
-    print("\nStatus: It's your turn to make a move. Enter your command.")
+    print("\nStatus: It's your turn. (Enter 1, -1... to play, 0 to draw/skip)")
     while True:
         try:
             player_choice = int(input())
@@ -165,8 +165,40 @@ def handle_computer_turn(computer_pieces, stock_pieces, domino_snake):
         computer_pieces.append(new_piece)
     return computer_pieces, stock_pieces, domino_snake
 
+def print_rules():
+    print("\n================== WELCOME TO DOMINOES! ==================")
+
+    print("\n### THE GOAL 🎯")
+    print("The goal is to be the first player to get rid of all your dominoes.")
+
+    print("\n### HOW TO PLAY 🧩")
+    print("On your turn, you must match one of your pieces to the numbers on")
+    print("either end of the 'domino snake' on the board.")
+
+    print("\n### CONTROLS ⌨️")
+    print("When it's your turn, enter a number to make your move:")
+
+    # Использование * для выделения пунктов
+    print("* Positive number (e.g., '3'):")
+    print("   Plays your 3rd piece to the RIGHT end of the snake.")
+
+    print("* Negative number (e.g., '-3'):")
+    print("   Plays your 3rd piece to the LEFT end of the snake.")
+
+    print("* Enter '0':")
+    print("   Draw a piece from the stock. If the stock is empty, this skips your turn.")
+
+    print("\n### END CONDITIONS 🏆")
+    print("* You WIN if you play all your pieces first.")
+    print("* You LOSE if the computer plays all its pieces first.")
+    print("* It's a DRAW if the game gets 'locked' and no one can make a move.")
+
+    print("================================================================")
+    input("\nPress Enter to start the game...")
+
 
 if __name__ == "__main__":
+    print_rules()
     stock_pieces, player_pieces, computer_pieces, domino_snake, status = setup_game()
 
     while True:
